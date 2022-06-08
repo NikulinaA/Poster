@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
+
 public class PosterManagerTest {
 
     PosterItem first = new PosterItem(1, 252, "Бладшот", "боевик", false);
@@ -17,6 +18,7 @@ public class PosterManagerTest {
     PosterItem ninth = new PosterItem(9, 8499, "Власть", "драма", true);
     PosterItem tenth = new PosterItem(10, 52, "Гнев", "боевик", false);
     PosterItem eleventh = new PosterItem(11, 407, "Семейка Крудс", "мультфильм", false);
+
 
 
     @Test
@@ -36,13 +38,55 @@ public class PosterManagerTest {
         add.save(tenth);
         add.save(eleventh);
 
-
         PosterItem[] actual = add.findAll();
         PosterItem[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth};
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
 
+    public void AddFindAllMaxCountPoster() {
+        PosterManager add = new PosterManager(18);
+
+        add.save(first);
+        add.save(second);
+        add.save(third);
+        add.save(fourth);
+        add.save(fifth);
+        add.save(sixth);
+        add.save(seventh);
+        add.save(eighth);
+        add.save(ninth);
+        add.save(tenth);
+        add.save(eleventh);
+
+        PosterItem[] actual = add.findAll();
+        PosterItem[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+
+    public void AddFindAllPoster() {
+        PosterManager add = new PosterManager(11);
+
+        add.save(first);
+        add.save(second);
+        add.save(third);
+        add.save(fourth);
+        add.save(fifth);
+        add.save(sixth);
+        add.save(seventh);
+        add.save(eighth);
+        add.save(ninth);
+        add.save(tenth);
+        add.save(eleventh);
+
+        PosterItem[] actual = add.findAll();
+        PosterItem[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
     @Test
 
     public void AddFindAllCountPoster() {
@@ -111,6 +155,52 @@ public class PosterManagerTest {
 
         PosterItem[] actual = add.findLast();
         PosterItem[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+
+    public void AddLastPoster() {
+        PosterManager add = new PosterManager(11);
+
+        add.save(first);
+        add.save(second);
+        add.save(third);
+        add.save(fourth);
+        add.save(fifth);
+        add.save(sixth);
+        add.save(seventh);
+        add.save(eighth);
+        add.save(ninth);
+        add.save(tenth);
+        add.save(eleventh);
+
+
+        PosterItem[] actual = add.findLast();
+        PosterItem[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+
+    public void AddLastMaxCountPoster() {
+        PosterManager add = new PosterManager(589);
+
+        add.save(first);
+        add.save(second);
+        add.save(third);
+        add.save(fourth);
+        add.save(fifth);
+        add.save(sixth);
+        add.save(seventh);
+        add.save(eighth);
+        add.save(ninth);
+        add.save(tenth);
+        add.save(eleventh);
+
+
+        PosterItem[] actual = add.findLast();
+        PosterItem[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 
         Assertions.assertArrayEquals(expected, actual);
     }

@@ -1,4 +1,6 @@
-package ru.netology.manager;
+package ru.netology.repository;
+
+import ru.netology.domain.PosterItem;
 
 public class PosterRepository {
 
@@ -6,7 +8,12 @@ public class PosterRepository {
     private PosterItem[] items = new PosterItem[0];
     private int id;
 
+    public PosterRepository(int id) {
+        this.id = id;
+    }
 
+    public PosterRepository() {
+    }
 
     public void save(PosterItem item) {
         int length = items.length + 1;
@@ -21,26 +28,24 @@ public class PosterRepository {
     }
     public PosterItem[] findAll() {
 
-
-        PosterItem[] count = new PosterItem[items.length];
-        System.arraycopy(items, 0, count, 0, items.length);
-
-        return count;
+              return items;
     }
     public PosterItem[] findById() {
-        PosterItem[] tmp = new PosterItem[0];
-        for (int i = 0; i < tmp.length; i++) {
-            int index = 0;
-            for (PosterItem item : items) {
-                if (item.getId() == id) {
-                    tmp[index] = item;
-                    index++;
-                }
-
+        int length = items.length - 1;
+        PosterItem[] tmp = new PosterItem[length];
+        int index = 0;
+        for (PosterItem item : items) {
+            if (item.getId() == id) {
+                tmp[index] = item;
+                index++;
             }
         }
-        return tmp;
+        PosterItem[] ind = new PosterItem[index];
+        System.arraycopy(tmp, 0, ind, 0, ind.length);
+
+        return ind;
     }
+
         public PosterItem[] removeById () {
             int length = items.length - 1;
             PosterItem[] tmp = new PosterItem[length];
@@ -62,7 +67,8 @@ public class PosterRepository {
         }
 
 
-    }
+
+}
 
 
 
